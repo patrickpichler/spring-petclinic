@@ -7,6 +7,22 @@ plugins {
   id 'org.cyclonedx.bom' version '2.3.1'
   id 'io.spring.javaformat' version '0.0.46'
   id "io.spring.nohttp" version "0.0.11"
+  id 'com.google.cloud.tools.jib' version '3.4.5'
+}
+
+jib {
+  from {
+    platforms {
+      platform {
+        architecture = 'amd64'
+        os = 'linux'
+      }
+      platform {
+        architecture = 'arm64'
+        os = 'linux'
+      }
+    }
+  }
 }
 
 gradle.startParameter.excludedTaskNames += [ "checkFormatAot", "checkFormatAotTest" ]
